@@ -14,18 +14,18 @@ This project is a simple Node.js authentication system that implements user regi
 
 ## 🏗️ Project Structure
 ├── controller
-│ └── auth-controller.js
+│   └── auth-controller.js
 ├── database
-│ └── db.js
+│   └── db.js
 ├── middleware
-│ ├── admin-middleware.js
-│ └── auth-middleware.js
+│   ├── admin-middleware.js
+│   └── auth-middleware.js
 ├── model
-│ └── User.js
+│   └── User.js
 ├── routes
-│ ├── admin-routes.js
-│ ├── auth-routes.js
-│ └── home-routes.js
+│   ├── admin-routes.js
+│   ├── auth-routes.js
+│   └── home-routes.js
 ├── .env
 ├── server.js
 └── package.json
