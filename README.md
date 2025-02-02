@@ -119,7 +119,7 @@ Contributions are welcome! Feel free to open issues, fork the repo, and submit p
 
 ## 💬 Contact
 
-For any inquiries, reach out at: your-email@example.com
+For any inquiries, reach out at: rkrishan894@gmail.com
 
 **Happy Coding!** 🚀
    
