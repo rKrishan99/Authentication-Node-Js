@@ -1,161 +1,140 @@
- Node.js Authentication Project
+# Node.js Authentication Project
 
-📋 Project Overview
+## 📋 Project Overview
 
 This project is a simple Node.js authentication system that implements user registration, login, role-based access control, and protected routes using JWT (JSON Web Tokens). It connects to a MongoDB database to manage user data.
 
-🚀 Features
+## 🚀 Features
 
-User Registration ✅
+- **User Registration** ✅
+- **User Login with JWT Authentication** 🔑
+- **Role-Based Access Control (Admin/User)** 🔐
+- **Protected Routes with Middleware** 🛡️
+- **MongoDB Database Integration** 🌐
 
-User Login with JWT Authentication 🔑
-
-Role-Based Access Control (Admin/User) 🔐
-
-Protected Routes with Middleware 🛡️
-
-MongoDB Database Integration 🌐
-
-🏗️ Project Structure
-
+## 🏗️ Project Structure
 ├── controller
-│   └── auth-controller.js
+│ └── auth-controller.js
 ├── database
-│   └── db.js
+│ └── db.js
 ├── middleware
-│   ├── admin-middleware.js
-│   └── auth-middleware.js
+│ ├── admin-middleware.js
+│ └── auth-middleware.js
 ├── model
-│   └── User.js
+│ └── User.js
 ├── routes
-│   ├── admin-routes.js
-│   ├── auth-routes.js
-│   └── home-routes.js
+│ ├── admin-routes.js
+│ ├── auth-routes.js
+│ └── home-routes.js
 ├── .env
 ├── server.js
 └── package.json
 
-⚙️ Installation and Setup
 
-Clone the Repository:
+## ⚙️ Installation and Setup
 
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/your-username/your-repo.git](https://github.com/rKrishan99/Authentication-Node-Js.git)
 
-Install Dependencies:
+2. **Install Dependencies:**
+   ```bash
+   npm install
 
-npm install
+3. **Environment Configuration (.env):**
+   ```bash
+   PORT=3000
+   DB_URL=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
+   JWT_SECRET_KEY=your_secret_key
 
-Environment Configuration (.env):
+4. **Start the Server:**
+   ```bash
+   npm run dev
+   
+5. **API Base URL:**
+   ```bash
+   http://localhost:3000/api
 
-PORT=3000
-DB_URL=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
-JWT_SECRET_KEY=your_secret_key
+## 📡 API Endpoints
 
-Start the Server:
+### 1️⃣ Authentication Routes (`/api/auth`)
 
-npm start
+- **POST /register** - Register a new user.
+- **POST /login** - Login user and get JWT token.
 
-API Base URL:
+### 2️⃣ Home Routes (`/api/home`)
 
-http://localhost:3000/api
+- **GET /welcome** - Protected route (requires authentication).
 
-📡 API Endpoints
+### 3️⃣ Admin Routes (`/api/admin`)
 
-1️⃣ Authentication Routes (/api/auth)
+- **GET /welcome** - Admin-only protected route (requires admin role).
 
-POST /register - Register a new user.
+## 🗂️ Key Components Explained
 
-POST /login - Login user and get JWT token.
+### 1️⃣ `server.js`
 
-2️⃣ Home Routes (/api/home)
+- Sets up the Express server.
+- Connects to MongoDB.
+- Uses middleware for JSON parsing.
+- Registers routes.
 
-GET /welcome - Protected route (requires authentication).
+### 2️⃣ `auth-controller.js`
 
-3️⃣ Admin Routes (/api/admin)
+- Handles user registration and login.
+- Hashes passwords using bcrypt.
+- Generates JWT tokens.
 
-GET /welcome - Admin-only protected route (requires admin role).
+### 3️⃣ Middleware
 
-🗂️ Key Components Explained
+- **auth-middleware.js**: Verifies JWT token and protects routes.
+- **admin-middleware.js**: Checks if the authenticated user has admin privileges.
 
-1️⃣ server.js
+### 4️⃣ User Model (`User.js`)
 
-Sets up the Express server.
+- Defines user schema with fields like username, email, password, and role.
 
-Connects to MongoDB.
+### 5️⃣ Routes
 
-Uses middleware for JSON parsing.
+- **auth-routes.js**: Manages registration and login.
+- **home-routes.js**: Protected route accessible to authenticated users.
+- **admin-routes.js**: Protected route accessible to admins only.
 
-Registers routes.
+### 6️⃣ Database Connection (`db.js`)
 
-2️⃣ auth-controller.js
+- Connects to MongoDB using Mongoose.
 
-Handles user registration and login.
+## 🔑 JWT Authentication Flow
 
-Hashes passwords using bcrypt.
+1. User registers or logs in.
+2. Server validates credentials.
+3. Server generates JWT token.
+4. Client stores the token (usually in localStorage).
+5. Client sends the token with API requests in the Authorization header.
+6. Middleware verifies the token before granting access to protected routes.
 
-Generates JWT tokens.
+**Example Token Header:**
 
-3️⃣ middleware
 
-auth-middleware.js: Verifies JWT token and protects routes.
+## ❗ Usage Notes
 
-admin-middleware.js: Checks if the authenticated user has admin privileges.
+- Always secure your JWT secret key.
+- Use HTTPS in production.
+- Tokens expire in 15 minutes (as configured).
+- Passwords are hashed using bcrypt for security.
 
-4️⃣ User Model (User.js)
-
-Defines user schema with fields like username, email, password, and role.
-
-5️⃣ Routes
-
-auth-routes.js: Manages registration and login.
-
-home-routes.js: Protected route accessible to authenticated users.
-
-admin-routes.js: Protected route accessible to admins only.
-
-6️⃣ Database Connection (db.js)
-
-Connects to MongoDB using Mongoose.
-
-🔑 JWT Authentication Flow
-
-User registers or logs in.
-
-Server validates credentials.
-
-Server generates JWT token.
-
-Client stores the token (usually in localStorage).
-
-Client sends the token with API requests in the Authorization header.
-
-Middleware verifies the token before granting access to protected routes.
-
-Example Token Header:
-
-Authorization: Bearer <token>
-
-❗ Usage Notes
-
-Always secure your JWT secret key.
-
-Use HTTPS in production.
-
-Tokens expire in 15 minutes (as configured).
-
-Passwords are hashed using bcrypt for security.
-
-📝 License
+## 📝 License
 
 This project is licensed under the MIT License.
 
-🙌 Contributing
+## 🙌 Contributing
 
 Contributions are welcome! Feel free to open issues, fork the repo, and submit pull requests.
 
-💬 Contact
+## 💬 Contact
 
 For any inquiries, reach out at: your-email@example.com
 
-Happy Coding! 🚀
+**Happy Coding!** 🚀
+   
+   
