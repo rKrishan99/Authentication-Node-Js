@@ -13,22 +13,8 @@ This project is a simple Node.js authentication system that implements user regi
 - **MongoDB Database Integration** 🌐
 
 ## 🏗️ Project Structure
-├── controller
-│   └── auth-controller.js
-├── database
-│   └── db.js
-├── middleware
-│   ├── admin-middleware.js
-│   └── auth-middleware.js
-├── model
-│   └── User.js
-├── routes
-│   ├── admin-routes.js
-│   ├── auth-routes.js
-│   └── home-routes.js
-├── .env
-├── server.js
-└── package.json
+![image](https://github.com/user-attachments/assets/2ed2ffb3-0785-46e6-bbd6-133dd821f559)
+
 
 
 ## ⚙️ Installation and Setup
