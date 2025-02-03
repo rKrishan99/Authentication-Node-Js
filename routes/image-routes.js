@@ -2,7 +2,8 @@ const express = require("express");
 const authMiddleware = require("../middleware/auth-middleware");
 const adminMiddleware = require("../middleware/admin-mddleware");
 const uploadMiddleware = require("../middleware/upload-middleware");
-const { uploadImageController } = require("../controller/image-controller");
+const { uploadImageController, deleteImageController } = require("../controller/image-controller");
+const { route } = require("./auth-routes");
 
 const router = express.Router();
 
@@ -12,9 +13,15 @@ router.post(
   authMiddleware,
   adminMiddleware,
   uploadMiddleware.single("image"),
-  uploadImageController
+  uploadImageController,
+  deleteImageController
 );
 
 //get all images
+router.get("/get", authMiddleware)
+
+//delete image routes
+router.delete("/:id", authMiddleware, adminMiddleware, deleteImageController);
 
 module.exports = router;
+ 
